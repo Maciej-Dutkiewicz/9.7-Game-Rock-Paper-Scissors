@@ -163,6 +163,7 @@ function endGame() {
     setGameElements();
     }
 }
+//Dodaje komentarz
 
 
 
