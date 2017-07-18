@@ -1,0 +1,28 @@
+.container {
+	padding: 50px;
+}
+.btn-default {
+	background-color: black;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 20px 40px;
+}
+#js-playerPick_rock,
+.fa-hand-rock-o,
+.rock {
+	background-color: #777777;
+	font-size: 25px;
+}
+#js-playerPick_paper,
+.fa-hand-paper-o,
+.paper {
+	background-color: #5BC0DE;
+	font-size: 25px;
+}
+#js-playerPick_scissors,
+.fa-hand-scissors-o,
+.scissors {
+	background-color: #D9534F;
+	font-size: 25px;
+}
