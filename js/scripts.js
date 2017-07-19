@@ -6,15 +6,15 @@ var newGameBtn = document.getElementById('js-newGameButton');
 
 newGameBtn.addEventListener('click', newGame);
 //2. WYBÓR GRACZA. SEKCJA 3 W HTML.
-//Do każdego z trzech buttonów dodajemy lintener czyli będzie to wybór gracza.
-//Po kliknięciu uruchamia funkję z wyborem playerPock.
+//Do każdego z trzech buttonów dodajemy listener czyli będzie to wybór gracza.
+//Po kliknięciu uruchamia funkję z wyborem playerPick.
 var pickRock = document.getElementById('js-playerPick_rock'),
      pickPaper = document.getElementById('js-playerPick_paper'),
      pickScissors = document.getElementById('js-playerPick_scissors');
 
-pickRock.addEventListener('click', function() { playerPick('rock') });
-pickPaper.addEventListener('click', function() { playerPick('paper') });
-pickScissors.addEventListener('click', function() { playerPick('scissors') });
+pickRock.addEventListener('click', function() { playerPick('rock');});//dodałem średnik
+pickPaper.addEventListener('click', function() { playerPick('paper');});//dodałem średnik
+pickScissors.addEventListener('click', function() { playerPick('scissors');});//dodałem średnik
 
 //LOGIKA GRY
 
@@ -50,7 +50,7 @@ function setGameElements() {
       break;
     case 'ended':
         newGameBtn.innerText = 'START NEW GAME';
-        pickElem.style.display = 'none';//dodałem ten element brak w instrukcji
+        pickElem.style.display = 'none';//dodalem ten element brak w instrukcji
         resultsElem.style.display = 'none';//dodałem ten element brak w instrukcji
     case 'notStarted':
     default:
@@ -87,8 +87,11 @@ function newGame() {
 }
 //7. WYBÓR GRACZA.
 //Funkcja definiująca wybór gracza. Czy to ma zostać???
-function playerPick(playerPick) {//DO WYKASOWANIA!!!!!!
-    console.log(playerPick);
+function playerPick(playerPick) {
+    var computerPick = getComputerPick();
+
+    playerPickElem.innerHTML = playerPick;
+    computerPickElem.innerHTML = computerPick;
 }
 //8. LOSOWANIE WYBORU KOMPUTERA.
 //Używamy obiektu Math.random(). Losuje liczbę w predziale od 0 do 1.
@@ -104,12 +107,7 @@ var playerPickElem = document.getElementById('js-playerPick'),//Do zmiennej przy
     playerResultElem = document.getElementById('js-playerResult'),//Do zmiennej przypisano wynik gracza.
     computerResultElem = document.getElementById('js-computerResult');//Do zmiennej przypisano wynik komputera.
 //Nie bardzo rozumiem co się dzieje ponizej!!!
-function playerPick(playerPick) {
-    var computerPick = getComputerPick();
 
-    playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
-}
 //10. LOGIKA GRY I PRZYZNAWANIE PUNKTÓW.
 //Tego dziś nie ogarniam!!!
 function checkRoundWinner(playerPick, computerPick) {
@@ -134,8 +132,8 @@ function checkRoundWinner(playerPick, computerPick) {
         computerResultElem.innerHTML = "Win!";
         computer.score++;
     }
-    setGamePoints();//nie kumam
-    endGame();//nie kumam
+    setGamePoints();//Aktualizacja wyniku
+    endGame();//Sprawdzenie kto wygtał
 }
 function playerPick(playerPick) {
     var computerPick = getComputerPick();
@@ -155,15 +153,15 @@ function setGamePoints() {
 function endGame() {
     if (player.score == 5) {
         alert(player.name +' is the winner!');
-        gameState = 'ended'
+        gameState = 'ended';
     setGameElements();
     } else if (computer.score == 5) {
         alert('Computer is the winner!');
-        gameState = 'ended'
+        gameState = 'ended';
     setGameElements();
     }
 }
-//Dodaje komentarz
+
 
 
 
